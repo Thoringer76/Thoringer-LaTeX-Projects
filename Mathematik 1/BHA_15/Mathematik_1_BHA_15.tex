@@ -1,0 +1,137 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}			% Use this package to include images
+\usepackage{amsmath}			% A library of many standard math expressions
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}% Sets 1in margins. 
+\usepackage{fancyhdr}			% Creates headers and footers
+\usepackage{enumerate}          %These two package give custom labels to a list
+\usepackage[shortlabels]{enumitem}
+
+
+% Creates the header and footer. You can adjust the look and feel of these here.
+\pagestyle{fancy}
+\fancyhead[l]{Mathematik 1}
+\fancyhead[c]{BHA 15}
+\fancyhead[r]{29.1.2024 - 4.2.2024}
+\fancyfoot[c]{\thepage}
+\renewcommand{\headrulewidth}{0.2pt} %Creates a horizontal line underneath the header
+\setlength{\headheight}{15pt} %Sets enough space for the header
+
+\begin{document} %The writing for your homework should all come after this. 
+
+\noindent
+\begin{enumerate}[start=1,label={\bfseries Frage \arabic*:},leftmargin=1in]
+
+    \item Gegeben sei $\Vec{r}:[0,2] \to \mathbb{R}^2$ mit $\Vec{r}(t) = \begin{pmatrix} 1 \\ -2t \end{pmatrix}$. Berechnen Sie $\int\limits_{\Vec{r}} 1 \: ds$.
+    \begin{align*}
+        \Dot{\Vec{r}}(t) &= \begin{pmatrix} 0 \\ -2 \end{pmatrix} \\
+        \lVert \Dot{\Vec{r}}(t) \rVert &= \sqrt{(0)^2 + (-2)^2} \\
+        &= 2 \\
+        \int\limits_{\Vec{r}} 1 \: ds &= \int\limits_0^2 \lVert \Dot{\Vec{r}}(t) \rVert \: dt \\
+        &= \int\limits_0^2 2 \: dt \\
+        &= \left[2t\right]_0^2 \\
+        &= (2 \cdot 2) - (2 \cdot 0) \\
+        &= (4) - (0) \\
+        &= 4
+    \end{align*}
+
+    \item Gegeben seien $\Vec{r}:[0,2\pi] \to \mathbb{R}^2$ mit $\Vec{r}(t) = \begin{pmatrix} \cos{(t)} \\ \sin{(t)} \end{pmatrix}$ und $f:\mathbb{R}^2 \to \mathbb{R}$ mit $f(x,y)=x$. Berechnen Sie $\int\limits_{\Vec{r}} f \: ds$.
+    \begin{align*}
+        \Dot{\Vec{r}}(t) &= \begin{pmatrix} -\sin{(t)} \\ \cos{(t)} \end{pmatrix} \\
+        \lVert \Dot{\Vec{r}}(t) \rVert &= \sqrt{(-\sin{(t)})^2 + (\cos{(t)})^2} \\
+        &= 1 \\
+        \int\limits_{\Vec{r}} f \: ds &= \int\limits_0^{2\pi} f(\Vec{r}(t)) \lVert \Dot{\Vec{r}}(t) \rVert \: dt \\
+        &= \int\limits_0^{2\pi} \cos{(t)} \cdot 1 \: dt \\
+        &= \left[\sin{(t)}\right]_0^{2\pi} \\
+        &= (0) - (0) \\
+        &= 0
+    \end{align*}
+
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+
+    \item Gegeben seien $\Vec{r}:[-1,0] \to \mathbb{R}^2$ mit $\Vec{r}(t) = \begin{pmatrix} t \\ t^2 \end{pmatrix}$ und $f:\mathbb{R}^2 \to \mathbb{R}$ mit $f(x,y)=\sqrt{y}$. Berechnen Sie $\int\limits_{\Vec{r}} f \: ds$. \\
+    \textit{Achtung: $f(x,y)=\sqrt{y}$, wodurch nur der Betrag von y berechnet werden kann. Aufgrund der Symmetrie von $\Vec{r}(t)$ ist $\int\limits_{-1}^{0} f(\Vec{r}(t)) \lVert \Dot{\Vec{r}}(t) \rVert \: dt = \int\limits_{0}^{1} f(\Vec{r}(t)) \lVert \Dot{\Vec{r}}(t) \rVert \: dt$.}
+    \begin{align*}
+        \Dot{\Vec{r}}(t) &= \begin{pmatrix} 1 \\ 2t \end{pmatrix} \\
+        \lVert \Dot{\Vec{r}}(t) \rVert &= \sqrt{(1)^2 + (2t)^2} \\
+        &= \sqrt{1 + 4t^2} \\
+        \int\limits_{\Vec{r}} f \: ds &= \int\limits_{0}^{1} f(\Vec{r}(t)) \lVert \Dot{\Vec{r}}(t) \rVert \: dt \\
+        &= \int\limits_{0}^{1} t \cdot \sqrt{1 + 4t^2} \: dt \\
+        u &= 1 + 4t^2 \\
+        \frac{du}{dt} &= 8t \\
+        du &= 8t \: dt \\
+        \int\limits_{0}^{1} t \cdot \sqrt{1 + 4t^2} \: dt &= \int\limits_{0}^{1} t \cdot \sqrt{u} \: dt \\
+        &= \frac{1}{8} \int\limits_{0}^{1} 8t \cdot \sqrt{u} \: dt \\
+        &= \frac{1}{8} \int\limits_{...}^{...} \sqrt{u} \: du \\
+        &= \frac{1}{8} \left[\frac{2}{3} u^{\frac{3}{2}}\right]_{...}^{...} \\
+        &= \left[\frac{2}{24} \sqrt{u^3}\right]_{...}^{...} \\
+        &= \left[\frac{1}{12} \sqrt{(1+4t^2)^3}\right]_{0}^{1} \\
+        &= \left(\frac{1}{12}\sqrt{125}\right) - \left(\frac{1}{12}\right) \\
+        &= \frac{1}{12} \left(\sqrt{125} - 1 \right)
+    \end{align*}
+
+    \item Gegeben seien $\Vec{r}:[0,2\pi] \to \mathbb{R}^2$ mit $\Vec{r}(t) = \begin{pmatrix} \sin{(t)} \\ \cos{(t)} \end{pmatrix}$ und $\Vec{v}:\mathbb{R}^2 \to \mathbb{R}^2$ mit $\Vec{v}(x,y)= \begin{pmatrix} x^2 \\ y^2 \end{pmatrix}$. Berechnen Sie $\int\limits_{\Vec{r}} \Vec{v} \: d\Vec{s}$.
+    \begin{align*}
+        \Dot{\Vec{r}}(t) &= \begin{pmatrix} \cos{(t)} \\ -\sin{(t)} \end{pmatrix} \\
+        \int\limits_{\Vec{r}} \Vec{v} \: d\Vec{s} &= \int\limits_0^{2\pi} \left< \Vec{v}(\Vec{r}(t)) , \Dot{\Vec{r}}(t) \right> \: dt \\
+        &= \int\limits_0^{2\pi} \left< \begin{pmatrix} \sin^2{(t)} \\ \cos^2{(t)} \end{pmatrix} , \begin{pmatrix} \cos{(t)} \\ -\sin{(t)} \end{pmatrix} \right> \: dt \\
+        &= \int\limits_0^{2\pi} (\sin^2{(t)} \cdot \cos{(t)} - \cos^2{(t)} \cdot \sin{(t)}) \: dt \\
+        &= \int\limits_0^{2\pi} (\sin^2{(t)} \cdot \cos{(t)}) \: dt - \int\limits_0^{2\pi} (\cos^2{(t)} \cdot \sin{(t)}) \: dt \\
+        \int\limits_0^{2\pi} (\sin^2{(t)} \cdot \cos{(t)}) \: dt &= \int\limits_0^{2\pi} u^2 \cdot \cos{t} \: dt \\
+        u &= \sin{t} \\
+        \frac{du}{dt} &= \cos{t} \\
+        du &= \cos{t} \: dt \\
+        \int\limits_0^{2\pi} u^2 \cdot \cos{t} \: dt &= \int\limits_{...}^{...} u^2 \: du \\
+        &= \left[\frac{u^3}{3}\right]_{...}^{...} \\
+        &= \left[\frac{\sin^3{(t)}}{3}\right]_{0}^{2\pi}
+    \end{align*}
+    \begin{align*}
+        \int\limits_0^{2\pi} (\cos^2{(t)} \cdot \sin{(t)}) \: dt &= \int\limits_0^{2\pi} u^2 \cdot \sin{t} \: dt \\
+        u &= \cos{t} \\
+        \frac{du}{dt} &= -\sin{t} \\
+        du &= -\sin{t} \: dt \\
+        \int\limits_0^{2\pi} u^2 \cdot \sin{t} \: dt &= - \int\limits_0^{2\pi} u^2 \cdot (-\sin{t}) \: dt \\
+        - \int\limits_0^{2\pi} u^2 \cdot (-\sin{t}) \: dt &= - \int\limits_{...}^{...} u^2 \: du \\
+        &= - \left[\frac{u^3}{3}\right]_{...}^{...} \\
+        &= - \left[\frac{\cos^3{(t)}}{3}\right]_{0}^{2\pi} \\
+        \int\limits_0^{2\pi} (\sin^2{(t)} \cdot \cos{(t)} - \cos^2{(t)} \cdot \sin{(t)}) \: dt &= \left[\frac{\sin^3{(t)}}{3}\right]_0^{2\pi} + \left[\frac{\cos^3{(t)}}{3}\right]_0^{2\pi} \\
+        &= \left(\left(0\right) - \left(0\right)\right) + \left(\left(\frac{1}{3}\right) - \left(\frac{1}{3}\right)\right) \\
+        &= 0
+    \end{align*}
+
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    \enlargethispage{-\baselineskip}
+    
+    \item Gegeben seien $\Vec{r}:[0,1] \to \mathbb{R}^2$ mit $\Vec{r}(t) = \begin{pmatrix} e^t \\ e^{-t} \end{pmatrix}$ und $\Vec{v}:\mathbb{R}^2 \to \mathbb{R}^2$ mit $\Vec{v}(x,y)= \begin{pmatrix} 1 \\ x \end{pmatrix}$. Berechnen Sie $\int\limits_{\Vec{r}} \Vec{v} \: d\Vec{s}$.
+    \begin{align*}
+        \Dot{\Vec{r}}(t) &= \begin{pmatrix} e^t \\ -e^{-t} \end{pmatrix} \\
+        \int\limits_{\Vec{r}} \Vec{v} \: d\Vec{s} &= \int\limits_0^1 \left< \Vec{v}(\Vec{r}(t)) , \Dot{\Vec{r}}(t) \right> \: dt \\
+        &= \int\limits_0^1 \left< \begin{pmatrix} 1 \\ e^t \end{pmatrix} , \begin{pmatrix} e^t \\ -e^{-t} \end{pmatrix} \right> \: dt \\
+        &= \int\limits_0^1 (e^t - e^t \cdot e^{-t}) \: dt \\
+        &= \int\limits_0^1 (e^t - e^0) \: dt \\
+        &= \int\limits_0^1 (e^t - 1) \: dt \\
+        &= [e^t - t]_0^1 \\
+        &= (e - 1) - (1) \\
+        &= e - 2
+    \end{align*}
+
+\end{enumerate}
+\end{document}
