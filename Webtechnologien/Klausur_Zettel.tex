@@ -1,0 +1,151 @@
+\documentclass[10pt]{article}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz,lipsum,lmodern}
+\usepackage[most]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{listings}
+
+\pagestyle{fancy}
+\fancyhead[l]{Webtechnologien}
+\fancyhead[c]{Typescript}
+\fancyhead[r]{28.02.2024}
+\fancyfoot[c]{\thepage}
+\renewcommand{\headrulewidth}{0.2pt}
+\setlength{\headheight}{15pt}
+
+\begin{document} 
+
+\noindent
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Allgemeines}]
+    \begin{itemize}
+        \item Syntaktische Obermenge von JavaScript
+        \item Fügt statische Typisierung hinzu
+        \item Ermöglicht Angabe der Datentypen
+        \item Typüberprüfung erfolgt vorab während Kompilierung
+        \item JavaScript:
+        \begin{itemize}
+            \item Sprache mit loser Typisierung
+            \item Typ von Variablen und Funktionsparametern wird durch ihre Verwendung festgelegt
+        \end{itemize}
+        \item TypeScript Compiler wandet TypeScript Code in JavaScript Code um
+        \item Installation des Compilers mittels node.js Package Manager (npm)
+        \item Ausführung des Compilers mittels npx
+        \item TypeScript-Compiler wird durch Datei tsconfig.json konfiguriert
+        \item Initiierung durch das Kommando npx tsc -init
+        \item Festlegung z.B. von Eingabe- und Ausgabeverzeichnissen
+    \end{itemize}
+    \begin{lstlisting}
+        {
+            "include": ["src"],
+            "compilerOptions": {
+                "outDir": "./build"
+            }
+        }
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Orange!5!white,
+    colframe=Orange!75!black,
+    title={\centering Typen}]
+    \begin{itemize}
+        \item Typen in TypeScript können explizit oder implizit festgelegt werden
+        \item Explizite Festlegung: Variablenname gefolgt von Doppelpunkt und Typ
+        \item Typen: \textbf{number, string, boolean}
+        \item Bei impliziter Typ-Festlegung schließt TypeScript den Typ auf Basis der ersten Zuweisung
+        \item In beiden Fällen ist der Typ der Variablen hinterher String (Zeichenkette)
+    \end{itemize}
+    \begin{lstlisting}
+        // explizite Typ-Festlegung
+        let vorname: string = "Olaf";
+
+        // implizite Typ-Festlegung
+        let vorname2 = "Friedrich";
+    \end{lstlisting}
+    \begin{itemize}
+        \item Spezielle Typen: \textbf{any} und \textbf{unknown}
+        \item Wenn TypeScript auf einen Typ nicht schließen kann, wird die Typisierung hierfür außer Kraft gesetzt (Typ: \textbf{any})
+        \item Verhindert keine falsche Nutzung
+        \item Besser: Typ explizit auf unbekannt (\textbf{unknown}) setzen und vor der Verwendung ggf. auf korrekten Typ casten
+    \end{itemize}
+    \begin{lstlisting}
+        let ergebnis: any = 33;
+        ergebnis = "Christian"; // kein Fehler!
+        if (ergebnis == false)  // kein Fehler!
+            ergebnis = true;
+
+        let resultat: unknown = 11;
+    \end{lstlisting}
+    \begin{itemize}
+        \item Fehler bei Typ-Wechsel: Fehlermeldung, wenn Typ eines zugewiesenen Wertes und zuvor (explizit oder implizit) festgelegter Typ nicht übereinstimmen!
+    \end{itemize}
+    \begin{lstlisting}
+        // explizite Typ-Festlegung
+        let vorname: string = "Olaf";
+        vorname = 3.14;
+
+        // implizite Typ-Festlegung
+        let vorname2 = "Friedrich";
+        vorname2 = true;
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Yellow!5!white,
+    colframe=Yellow!75!black,
+    title={\centering Arrays}]
+    \begin{itemize}
+        \item Zusätzliche eckige Klammern nach dem Typ
+        \item Alle Array-Elemente haben den gleichen Typ!
+        \item Auch bei Arrays kann die Typ-Zuweisung implizit erfolgen
+        \item Arrays, deren Inhalte nicht verändert werden können, verwenden zusätzlich das Attribut \textbf{readonly}
+    \end{itemize}
+    \begin{lstlisting}
+        const namen: string[] = [];
+        // JS: const name = [];
+        name[0] = "Robert";
+        name[1] = 42;
+
+        const vornamen: readonly string[] = [];
+        vornamen[0] = "Annalena";
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Green!5!white,
+    colframe=Green!75!black,
+    title={\centering Tupel}]
+    \begin{itemize}
+        \item Typisiertes Array mit einer vordefinierten Länge und festgelegten Typen
+        \item Für jeden Index wird der Typ vorab explizit festgelegt
+        \item Für höhere Indexwerte ist der Typ immer \textbf{any}
+        \item Höhere Indexwerte ausschließen mit \textbf{readonly}
+    \end{itemize}
+    \begin{lstlisting}
+        let meinTupel: [string, number, boolean];
+        meinTupel = ['Hubertus', 51, true];
+        meinTupel[2] = 12; // Fehler!
+        meinTupel[4] = "Boris"; // kein Fehler!
+        
+        let meinAnderesTupel: readonly [string, number];
+        meinAnderesTupel = ['Nancy', 53];
+        meinAnderesTupel[2] = true; // Fehler!
+    \end{lstlisting}
+    \end{tcolorbox}
+
+
+
+
+
+\end{document}
