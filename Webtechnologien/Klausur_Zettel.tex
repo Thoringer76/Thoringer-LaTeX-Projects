@@ -144,8 +144,251 @@
     \end{lstlisting}
     \end{tcolorbox}
 
+    \begin{tcolorbox}[
+    colback=Blue!5!white,
+    colframe=Blue!75!black,
+    title={\centering Objekte}]
+    \begin{itemize}
+        \item Typ für jede Eigenschaft wird individuell festgelegt
+        \item Zuweisungen falschen Typs führen zu Fehlermeldungen
+    \end{itemize}
+    \begin{lstlisting}
+        const kaffeeautomat: {marke: string, modell: string,
+        seriennr: number} = {
+            marke: "Jura",
+            modell: 'F9',
+            seriennr: 3318482
+        };
+    \end{lstlisting}
+    \begin{itemize}
+        \item Alle definierten Felder müssen initialisiert werden!
+        \item Optionale Felder können entsprechend mit \textbf{?} definiert werden
+    \end{itemize}
+    \begin{lstlisting}
+        const kaffeeautomat: {marke: string, modell: string,
+        seriennr: number} = {
+            marke: "Jura",
+            modell: 'F9'
+        };
 
+        const kaffeeautomat: {marke: string, modell: string,
+        seriennr?: number} = {
+            marke: "Jura",
+            modell: 'F9'
+        };
+    \end{lstlisting}
+    \end{tcolorbox}
 
+    \begin{tcolorbox}[
+    colback=Purple!5!white,
+    colframe=Purple!75!black,
+    title={\centering Aufzählungen}]
+    \begin{itemize}
+        \item Repräsentieren Gruppen von Konstanten
+        \item Aufzählungen können numerisch sein oder auf Zeichenketten beruhen
+        \item Standardmäßig hat die erste Konstante den Wert 0, die zweite 1, die dritte 2, etc.
+        \item Es ist möglich, einzelne Werte anzupassen, nachfolgende Werte sind jeweils 1 höher
+        \item Alle Konstanten müssen jedoch unterschiedliche Werte haben
+    \end{itemize}
+    \begin{lstlisting}
+        enum richtung {
+            VORWAERTS, RUECKWAERTS, LINKS, RECHTS, HOCH, RUNTER
+        };
+        // VORWAERTS = 0 ... RUNTER = 5
 
+        enum farbe { ROT = 1, GRUEN, GELB, BLAU, ORANGE = 10
+        };
+        //GRUEN = 2 ... BLAU = 4
+    \end{lstlisting}
+    \begin{itemize}
+        \item Alternativ können Aufzählungen Zeichenketten enthalten
+        \item Zugriff auf einzelne Konstanten mittels Punktoperator
+    \end{itemize}
+    \begin{lstlisting}
+        enum wochentag {
+            MONTAG = 'Montag',
+            DIENSTAG = 'Dienstag',
+            MITTWOCH = 'Mittwoch',
+            DONNERSTAG = 'Donnerstag',
+            FREITAG = 'Freitag',
+            SAMSTAG = 'Samstag',
+            SONNTAG = 'Sonntag'
+        };
+
+        foo(wochentag.FREITAG); // Parameter "Freitag"
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Blue!5!white,
+    colframe=Blue!75!black,
+    title={\centering Typen Aliase}]
+    \begin{itemize}
+        \item Für die weitere Verwendung kann man Typen benennen und anschließend wie Basistypen verwenden
+        \item Insbesondere sinnvoll für komplexere Typen (Arrays, Tupel, Objekte, Aufzählungen)
+    \end{itemize}
+    \begin{lstlisting}
+        type Person = [string, string, number];
+        type Alter = number;
+
+        let km: Person = ["Mustermann", "Klaus", 40];
+        let alterKM: Alter = 40;
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Green!5!white,
+    colframe=Green!75!black,
+    title={\centering Interfaces}]
+    \begin{itemize}
+        \item Ähnlich zu Typen-Aliasen, aber ausschließlich für Objekte
+    \end{itemize}
+    \begin{lstlisting}
+        interface Espressomaschine {
+            marke: string,
+            modell: string,
+            serienNr: number
+        };
+
+        const meinKA: Espressomaschine {
+            marke: "De'Longhi",
+            modell: "La Specialista Maestro",
+            serienNr: 39472833
+        };
+    \end{lstlisting}
+    \begin{itemize}
+        \item Können um weitere Eigenschaften erweitert werden
+    \end{itemize}
+    \begin{lstlisting}
+        interface Siebtraeger extends Espressomaschine {
+            filterDurchmesser: number,
+            kaffeeMuehle: boolean
+        };
+
+        const meinKA: Siebtraeger {
+            marke: "De'Longhi",
+            modell: "La Specialista Maestro",
+            serienNr: 39472833,
+            filterDurchmesser: 51
+        };
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Yellow!5!white,
+    colframe=Yellow!75!black,
+    title={\centering Vereinigungen}]
+    \begin{itemize}
+        \item Können Variablen mehr als einen Typ haben, spricht man von Vereinigungen (unions)
+        \item Zulässige Typen werden mit einem Oder-Operator \textbf{|} voneinander getrennt
+    \end{itemize}
+    \begin{lstlisting}
+        let switch: number | boolean = 1;
+        switch = false; // korrekt!
+        switch = 'an'; // Fehler!
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Orange!5!white,
+    colframe=Orange!75!black,
+    title={\centering Funktionen}]
+    \begin{itemize}
+        \item Der Typ der einzelnen Parameter und der Typ des Rückgabeparameters können festgelegt werden
+        \item Werden keine Typen festgelegt, wird \textbf{any} angenommen
+        \item Eine Rückgabetyp \textbf{void} bedeutet, dass die Funktion keinen Wert zurückgibt
+    \end{itemize}
+    \begin{lstlisting}
+        function Hallo(): void {
+            alert('Hallo!');
+        }
+
+        function Max(wert1: number, wert2: number): number {
+            return wert1 > wert2 ? wert1 : wert2;
+        }
+    \end{lstlisting}
+    \begin{itemize}
+        \item Optionale Parameter werden mit einem ? hinter dem Namen gekennzeichnet
+        \item Optionale Parameter können nur am Ende stehen
+        \item Default-Parameter sind ebenfalls optional, haben in diesem Fall jedoch einen fest vorgegebenen Wert
+        \item Dieser wird über eine Zuweisung im Funktionskopf festgelegt
+    \end{itemize}
+    \begin{lstlisting}
+        function Summe(wert1: number, wert2: number, wert3?: number)
+        : number {
+            return wert1 + wert2 + (0 || wert3);
+        }
+
+        function Wurzel(a: number, n: number = 2): number {
+            return a ** (1/n);
+        }
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Casting}]
+    \begin{itemize}
+        \item Typ einer Variable explizit umdeuten
+        \item Variable wird \textbf{as} gefolgt vom gewünschten Typ nachgestellt
+        \item Funktioniert nur, wenn Inhalt der Variablen dies auch erlaubt
+    \end{itemize}
+    \begin{lstlisting}
+        let a: unknown = 'Hallo!';
+        alert(a as string);
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Orange!5!white,
+    colframe=Orange!75!black,
+    title={\centering Klassen in TypeScript}]
+    \begin{itemize}
+        \item Eigenschaften haben wie bei Objekten Typen
+        \item Eigenschaften und Funktionen können individuelle Zugriffsrechte definieren
+        \item \textbf{public} - (Standard) erlaubt den Zugriff von außerhalb der Klasse
+        \item \textbf{private} - erlaubt nur den Zugriff aus Funktionen der Klasse
+        \item \textbf{protected} - erlaubt den Zugriff von innerhalb und erweiterten Klassen
+    \end{itemize}
+    \begin{lstlisting}
+        class KaffeeAutomat {
+            public marke: string;
+            public farbe: string;
+            private an: boolean;
+            constructor(kAMarke, kAFarbe, kAAn) { ... };
+            public anschalten = function(): void {
+                an = true;
+            }
+        }
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Yellow!5!white,
+    colframe=Yellow!75!black,
+    title={\centering Vergleich TypeScript - JavaScript}]
+    \begin{itemize}
+        \item TypeScript
+        \begin{itemize}
+            \item Starke Typisierung möglich
+            \item Fehlerhafte Verwendung führt zu Fehlermeldung
+            \item Array-Elemente haben gleichen Typ
+            \item Tupel als typisierte Arrays
+            \item Objekte mit typisierten Eigenschaften
+            \item Funktionen haben typisierte Parameter und Rückgabewerte
+            \item Klassen erlauben moderne objekt-orientierte Programmierung
+        \end{itemize}
+        \item JavaScript
+        \begin{itemize}
+            \item Lose Typisierung
+            \item Fehlerhafte Verwendung wird nicht unmittelbar erkannt
+            \item Array-Elemente können individuelle Typen haben
+            \item Eigenschaften von Objekten haben beliebige Typen
+            \item Parameter und Rückgabewerte von Funktionen haben keine Typen
+            \item Klassen sind nahezu identisch zu Konstruktoren ohne Klasse
+        \end{itemize}
+    \end{itemize}
+    \end{tcolorbox}
 
 \end{document}
