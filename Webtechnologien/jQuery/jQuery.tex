@@ -1,0 +1,398 @@
+\documentclass[10pt]{article}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz,lipsum,lmodern}
+\usepackage[most]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{listings}
+
+\pagestyle{fancy}
+\fancyhead[l]{Webtechnologien}
+\fancyhead[c]{jQuery}
+\fancyhead[r]{28.02.2024}
+\fancyfoot[c]{\thepage}
+\renewcommand{\headrulewidth}{0.2pt}
+\setlength{\headheight}{15pt}
+
+\begin{document} 
+
+\noindent
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Allgemeines}]
+    \begin{itemize}
+        \item Externe JavaScript-Bibliothek
+        \item Vereinfacht die Nutzung von JavaScript für Webseiten
+        \item Erlaubt:
+        \begin{itemize}
+            \item Einfachen Zugriff auf HTML-Elemente
+            \item Einfache Ausführung von Aktionen auf diese Elemente
+        \end{itemize}
+        \item Bibliothek muss entweder auf lokalem Server installiert werden oder extern verlinkt werden
+        \item Download von: jQuery.com
+        \item Einbindung im Kopfbereich
+        \item Alternativ: Google Content Delivery Network
+        \item Google CDN schneller, da ggf. schon in Cache, aber problematisch wegen DGSVO (vgl. Google Fonts)
+    \end{itemize}
+    \begin{lstlisting}
+        \textless head\textgreater 
+            \textless script src="jquery-3.7.1.min.js"\textgreater 
+                \textless /script\textgreater 
+        \textless /head\textgreater 
+
+        // from CDN
+        \textless head\textgreater 
+            \textless script src="https://ajax.googleapis.com/ajax/
+                libs/jquery/3.7.1/jquery.min.js"\textgreater 
+                    \textless /script\textgreater 
+        \textless /head\textgreater 
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Syntax}]
+    \begin{lstlisting}
+        $(selector).action()
+    \end{lstlisting}
+    \begin{itemize}
+        \item Alle jQuery-Kommandos beginnen mit dem Dollar-Zeichen
+    \end{itemize}
+    \begin{lstlisting}
+        $(this).hide(); // versteckt das aktuelle Element
+
+        $("h2").hide(); // versteckt alle \textless h2\textgreater 
+            -Elemente
+
+        $(".myClass").hide(); // versteckt alle Elemente der
+                              // der Klasse "myClass"
+
+        $("#myID").hide(); // versteckt das Element mit
+                           // der ID "myID"
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Selektoren}]
+    \begin{itemize}
+        \item Selektion aller Elemente mit dem Tag \textbf{tagname}:
+    \end{itemize}
+    \begin{lstlisting}
+        $("tagname")
+    \end{lstlisting}
+    \begin{itemize}
+        \item Selektion des Elements mit der ID \textbf{id}:
+    \end{itemize}
+    \begin{lstlisting}
+        $("#id")
+    \end{lstlisting}
+    \begin{itemize}
+        \item Selektion aller Elemente der Klasse \textbf{class}:
+    \end{itemize}
+    \begin{lstlisting}
+        $(".class")
+    \end{lstlisting}
+    \begin{itemize}
+        \item Selektion aller Elemente mit dem Tag \textbf{tagname}, deren Attribut \textbf{attribute} den Wert \textbf{value} aufweist
+    \end{itemize}
+    \begin{lstlisting}
+        $("tagname[attribute='value']'')
+    \end{lstlisting}
+    \begin{itemize}
+        \item Mehrere Alternative können durch Kommata getrennt kombiniert werden
+    \end{itemize}
+    \begin{lstlisting}
+        $("#myId,.myClass,.my2ndClass")
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Ereignisse/Aktionen}]
+    \begin{itemize}
+        \item Ereignisse lösen Aktionen aus
+        \item z.B. Maus-Klick, Mauszeiger auf ein Element bewegen, Tastatureingaben, Scrollen, etc.
+        \item Entsprechende Events werden nach dem Selektor mit dem Punktoperator abgetrennt
+        \item Damit auch eine entsprechende Aktion erfolgt, muss diese als Funktionsaufruf innerhalb der Ereignisverarbeitung definiert werden
+        \item Funktionen können auch direkt inline definiert werden
+    \end{itemize}
+    \begin{lstlisting}
+        $("h1").mouseenter();
+
+        // ---
+
+        $("h1").mouseenter(function(){
+            alert("Beruehrt");
+        })
+    \end{lstlisting}
+    \begin{itemize}
+        \item Mausereignisse:
+        \begin{itemize}
+            \item click
+            \item dblclick
+            \item mouseenter
+            \item mouseleave
+        \end{itemize}
+        \item Tastaturereignisse
+        \begin{itemize}
+            \item keypress
+            \item keydown
+            \item keyup
+        \end{itemize}
+        \item Formularereignisse
+        \begin{itemize}
+            \item submit
+            \item change
+            \item focus
+            \item blur
+        \end{itemize}
+        \item Seitenereignisse
+        \begin{itemize}
+            \item load
+            \item resize
+            \item scroll 
+            \item unload
+        \end{itemize}
+    \end{itemize}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Ready-Funktion}]
+    \begin{lstlisting}
+        $(document).ready(function(){
+            $("button").click(function(){
+                $("#element2hide").hide();
+            });
+        });
+    \end{lstlisting}
+    \begin{itemize}
+        \item Es ist sinnvoll, jQuery-Anweisungen innerhalb eines Ready- Events auszuführen:
+        \begin{itemize}
+            \item Verhindert die Ausführung vor Aufbau der kompletten Webseite
+            \item Hier: Auszublendendes Element könnte u.U. noch gar nicht angezeigt werden
+        \end{itemize}
+    \end{itemize}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Selektorenzusätze}]
+        \textbf{Selektorzusatz  Beispiel  Beschreibung} \\
+        :first  \$("p:first")  Erstes Absatzelement \\
+        :last  \$("p:last")  Letztes Absatzelement \\
+        :even  \$("tr:even")  Gerade Tabellenreihen \\
+        :odd  \$("tr:odd")  Ungerade Tabellenreihen \\
+        parent \textgreater  child  \$("div \textgreater  p")  \textless p\textgreater -Elemente, die direkte Kindelemente eines \textless div\textgreater -Containers sind \\
+        parent descendant  \$("div p")  \textless p\textgreater -Elemente, die Teil eines \textless div\textgreater -Containers sind \\
+        parent + next  \$("div + p")  \textless p\textgreater -Elemente, die unmittelbar vor oder hinter einem \textless div\textgreater -Container stehen \\
+        element ~ siblings  \$("div ~ p")  \textless p\textgreater -Elemente, die auf gleicher Stufe wie ein \textless div\textgreater -Container stehen \\
+        :eq(index)  \$("li ol:eq(2)")  2. Element in einer nummerierten Liste \\
+        :gt(value)  \$("li ul:gt(5)")  Alle Elemente in einer unnummerierten Liste ab dem 7.(!) Element \\
+        :lt(value)  \$("li ol:lt(4)")  Die Elemente 1-4 (Indizes 0-3) einer nummerierten Liste \\
+        :not(select or)  \$("input:not(empty"))  Alle nicht leeren Input-Elemente \\
+        :focus  \$(":focus")  Element, was aktuell den Fokus hat \\
+        :contains(text)  \$(":contains('TEST')")  Alle Elemente, die das Wort “TEST“ enthalten \\
+        :has(selector)  \$("div:has(ul)")  Alle \textless div\textgreater -Container, die ein unnummeriertes Listenelement enthalten \\
+        :empty  \$("p:emtpy")  Alle \textless p\textgreater -Elemente, die leer sind \\
+        :hidden  \$("p:hidden")  Alle \textless p\textgreater -Elemente, die nicht sichtbar sind \\
+        :visible  \$("h1:visible")  Alle \textless h1\textgreater -Elemente, die sichtbar sind \\
+        :input  \$(":input")  Alle Input-Elemente \\
+        :button  \$(":button")  Alle Button-Elemente \\
+        :image  \$(“image")  Alle Bild-Elemente \\
+        :enabled  \$(":enabled")  Alle aktiven Input-Elemente \\
+        :disabled  \$(":disabled")  Alle inaktiven Input-Elemente \\
+        :selected  \$(":selected")  Alle ausgewählten Input-Elemente \\
+        :checked  \$(":checked")  Alle angeklickten Check-Boxen
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Beispiel}]
+    \begin{lstlisting}
+        <!DOCTYPE html>
+        <html> 
+        <head> 
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery\
+                /3.7.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $("#hide").click(function(){
+                        $("img").hide();
+                    });
+                    $("#show").click(function(){
+                        $("img").show();
+                    });
+                });
+            </script>
+            </head>
+            <body>
+                <img src="Ilmenau.jpg" width="400" height="300"/>
+                <button id="hide">Hide</button>
+                <button id="show">Show</button>
+            </body>
+        </html>
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Blenden (Fading)}]
+    \begin{itemize}
+        \item Einblenden ausgewählter Elemente mit der Geschwindigkeit speed ("slow", "fast", Zeit in ms)
+        \begin{itemize}
+            \item Anschließend Aufruf der Callback—Funktion
+            \item Alle Parameter optional
+        \end{itemize}
+        \$(selector).fadeIn(speed, callback);
+    \end{itemize}
+    \begin{itemize}
+        \item Ausblenden ausgewählter Elemente: \\ \$(selector).fadeOut(speed, callback);
+    \end{itemize}
+    \begin{itemize}
+        \item Ein- oder Ausblenden je nach Zustand: \\ \$(selector).fadeToggle(speed, callback);
+    \end{itemize}
+    \begin{itemize}
+        \item Ein-/ Ausblenden bis zu einem festgelegten Transparenzgrad \\ \$(selector).fadeTo(speed, opacity, callback);
+    \end{itemize}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Klappen (Sliding)}]
+    \begin{itemize}
+        \item Ausklappen ausgewählter Elemente mit der Geschwindigkeit speed ("slow", "fast", Zeit in ms)
+        \begin{itemize}
+            \item Anschließend Aufruf der Callback—Funktion
+            \item Alle Parameter optional
+        \end{itemize}
+        \$(selector).slideDown(speed, callback);
+    \end{itemize}
+    \begin{itemize}
+        \item Einklappen ausgewählter Elemente: \\ \$(selector).slideUp(speed, callback);
+    \end{itemize}
+    \begin{itemize}
+        \item Ein- oder Ausklappen je nach Zustand: \\ \$(selector).slideToggle(speed, callback);
+    \end{itemize}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Animationen}]
+    \begin{itemize}
+        \item Einfache Animationen \\ \$(selector).animate({parameter},speed, callback);
+    \end{itemize}
+    \begin{itemize}
+        \item Positionsparameter für Abstand von Seitenbegrenzung (left, right, top, bottom)
+        \item left:'250px' // Verschieben zur Pos. 250px von linkem Seitenr.
+        \begin{itemize}
+            \item Mehrere Parameter werden durch Kommata voneinander getrennt
+            \item Standardmäßig haben alle HTML-Elemente eine statische Position, die nicht verschoben werden kann.
+            \item Um die Position zu verändern, müssen Sie zuerst die CSS-Eigenschaft position des Elements auf relativ, fest oder absolut einstellen!
+            \item Alle CSS-Styles als Parameter möglich!
+        \end{itemize}
+        \item Beispiele: opacity, width, height, fontSize, etc.
+        \item Relative Angaben durch vorangestelltes += möglich, z.B.: '+=50px'
+    \end{itemize}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Beispiel}]
+    \begin{lstlisting}
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <script src="https://ajax.googleapis.com/ajax/libs/
+                jquery/3.7.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        $("button").click(function(){
+                            $("div").animate({
+                            left: '+=25px',
+                            opacity: '0.5',
+                            height: '+=15px',
+                            fontSize: '+=4px',
+                            width: '100px'
+                            });
+                        });
+                    });
+                </script>
+            </head>
+            <body>
+                <button>Run Animation</button>
+                <div style="background:#8080F0;
+                    height:50px; width:50px; position:absolute;">TEST
+                        </div>
+            </body>
+        </html>
+    \end{lstlisting}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Inhalte und Attribute auslesen}]
+    \begin{itemize}
+        \item Zugriff auf Elementinhalte \\ \$(selector).text();
+        \item Elementinhalte inklusive HTML-Tags: \\ \$(selector).html();
+        \item Werte von Formularfeldern: \\ \$(selector).val();
+        \item Werte von Attributen: \\ \$(selector).attr(attrName);
+    \end{itemize}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Inhalte und Attribute setzen}]
+    \begin{itemize}
+        \item Zugriff auf Elementinhalte \\ \$(selector).text(value);
+        \item Elementinhalte inklusive HTML-Tags: \\ \$(selector).html(value);
+        \item Werte von Formularfeldern: \\ \$(selector).val(value);
+        \item Werte von Attributen: \\ \$(selector).attr(attrName, value);
+    \end{itemize}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Elemente löschen oder leeren}]
+    \begin{itemize}
+        \item Elemente entfernen \\ \$(selector).remove()
+        \item Elementinhalte entfernen: \\ \$(selector).empty();
+    \end{itemize}
+    \end{tcolorbox}
+
+    \begin{tcolorbox}[
+    colback=Red!5!white,
+    colframe=Red!75!black,
+    title={\centering Elemente einfügen}]
+    \begin{itemize}
+        \item Inhalte am Ende des selektierten Elements einhängen \\ \$(selector).append(newContent)
+        \item Inhalte am Anfang des selektierten Elements einhängen: \\ \$(selector).prepend(newContent);
+        \item Inhalte nach dem selektierten Elements einfügen: \\ \$(selector).after(newContent);
+        \item Inhalte vor dem selektierten Elements einfügen : \\ \$(selector).before(newContent);
+        \item Mehrere Elemente können durch Kommata voneinander getrennt gleichzeitig eingefügt werden
+    \end{itemize}
+    \end{tcolorbox}
+
+\end{document}
