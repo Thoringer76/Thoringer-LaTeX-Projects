@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}			% Use this package to include images
+\usepackage{amsmath}			% A library of many standard math expressions
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}% Sets 1in margins. 
+\usepackage{fancyhdr}			% Creates headers and footers
+\usepackage{enumerate}          %These two package give custom labels to a list
+\usepackage[shortlabels]{enumitem}
+
+
+% Creates the header and footer. You can adjust the look and feel of these here.
+\pagestyle{fancy}
+\fancyhead[l]{Mathematik 1}
+\fancyhead[c]{BHA 15}
+\fancyhead[r]{29.1.2024 - 4.2.2024}
+\fancyfoot[c]{\thepage}
+\renewcommand{\headrulewidth}{0.2pt} %Creates a horizontal line underneath the header
+\setlength{\headheight}{15pt} %Sets enough space for the header
+
+\begin{document} %The writing for your homework should all come after this. 
+
+\noindent
+\begin{enumerate}[start=1,label={\bfseries Frage \arabic*:},leftmargin=1in]
+
+    \item Bestimmen Sie alle Lösungen der Gleichung $(x-2)(x-1)(x+1)x=0$
+    \begin{align*}
+        (x_{1},x_{2},x_{3},x_{4}) = (2,1,-1,0)
+    \end{align*}
+
+    \item Bestimmen Sie die Lösung der folgenden Gleichung: $\log_{10}(x-10)=3$
+    \begin{align*}
+        x = 1010 \text{, da } 10^3 = 1000
+    \end{align*}
+
+    \item Bestimmen Sie alle Lösungen der Gleichung $\cos{(3x)}=1$
+    \begin{align*}
+        x = \frac{k \cdot 2\pi}{3}, k \in \mathbb{Z} \text{, da eine Periode } \frac{2\pi}{3} \text{ lang ist}
+    \end{align*}
+
+    \item Vereinfachen Sie den folgenden Ausdruck: \\
+          $(\sin{\frac{\pi}{4}} + \sin{\frac{\pi}{3}})(\sin{\frac{\pi}{4}} + \sin{\frac{\pi}{6}})(\cos{\frac{\pi}{4}} - \cos{\frac{\pi}{3}})(\cos{\frac{\pi}{4}} - \cos{\frac{\pi}{6}})$
+    \begin{align*}
+        -\frac{1}{16}
+    \end{align*}
+
+    \item Ziehen Sie die richtigen Antworten in die Felder. (Mehrfachauswahl der \\ 
+    Antworten ist möglich. Tipp: Nicht alle vorhandenen Antworten werden gebraucht.) 
+    Führen Sie eine Kurvendiskussion der Funktion $f(x)=x^2 - 3x + 2$ durch und vervollständigen Sie die folgenden Aussagen: 
+    \begin{itemize}
+        \item Der größte Definitionsbereich, der für $f$ möglich ist, sind \textbf{die reellen Zahlen}.
+        \item Die Nullstellen von $f$ sind bei \textbf{(1,0) und (2,0)}
+        \item $f$ schneidet die y-Achse bei \textbf{(0,2)}
+        \item Ist $f$ ungerade (punktsymmetrisch)? \textbf{Nein}
+        \item $f$ hat bei \textbf{(1.5, -0.25)} einen \textbf{Tiefpunkt}
+    \end{itemize}
+
+    \item Bestimmen Sie eine Koordinatengleichung der Ebene E, die den Punkt \\
+    $P(4,5,1)$ enthält und zur Geraden $g:\Vec{x}=\begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} + r \cdot 
+    \begin{pmatrix} -1 \\ 2 \\ 0 \end{pmatrix}, r \in \mathbb{R}$, orthogonal ist.
+    \begin{align*}
+        E : -x_1 + 2x_2 = 6
+    \end{align*}
+
+\end{enumerate}
+\end{document}
