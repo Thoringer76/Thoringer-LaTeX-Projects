@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}			% Use this package to include images
+\usepackage{amsmath}			% A library of many standard math expressions
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}% Sets 1in margins. 
+\usepackage{fancyhdr}			% Creates headers and footers
+\usepackage{enumerate}          %These two package give custom labels to a list
+\usepackage[shortlabels]{enumitem}
+
+
+% Creates the header and footer. You can adjust the look and feel of these here.
+\pagestyle{fancy}
+\fancyhead[l]{Mathematik 1}
+\fancyhead[c]{BHA 1}
+\fancyhead[r]{9.10.2023 - 15.10.2023}
+\fancyfoot[c]{\thepage}
+\renewcommand{\headrulewidth}{0.2pt} %Creates a horizontal line underneath the header
+\setlength{\headheight}{15pt} %Sets enough space for the header
+
+\begin{document} %The writing for your homework should all come after this. 
+
+\noindent
+\begin{enumerate}[start=1,label={\bfseries Frage \arabic*:},leftmargin=1in]
+
+    \item Die Ebene $E={\begin{pmatrix} x \\ y \\ z \end{pmatrix} \in \mathbb{R}^3 : 6x - 2y -7z = 5 }$ und die Gerade \\
+          $g={\begin{pmatrix} -3 \\ 1 \\ 2 \end{pmatrix} + t \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} : t \in \mathbb{R} }$
+          schneiden sich in genau einem Punkt $P=\begin{pmatrix} x \\ y \\ z \end{pmatrix}$. Wo genau?
+    \begin{align*}
+        P = \begin{pmatrix} -42 \\ 1 \\ -37 \end{pmatrix}
+    \end{align*}
+
+    \item Gegeben seien die Ebenen $E_1 = {\begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix} + r \begin{pmatrix} 2 \\ -1 \\ 2 \end{pmatrix}
+          + s \begin{pmatrix} 1 \\ 3 \\ 0 \end{pmatrix} : r , s \in \mathbb{R} }$ und $E_2 = {\begin{pmatrix} x \\ y \\ z \end{pmatrix}
+          \in \mathbb{R}^3 : 6x - 2y - 7z = 5}$. In welcher Lagebeziehung stehen die beiden Ebenen zueinander?
+    \begin{align*}
+        E_1 \text{ und } E_2 \text{ sind parallel ohne gemeinsame Punkte}
+    \end{align*} 
+ 
+    \item Gegeben seien die Geraden $g_1 = {\begin{pmatrix} 1 \\ 2 \end{pmatrix} + s \begin{pmatrix} -3 \\ 2 \end{pmatrix} : s \in \mathbb{R}}$ \\
+          und $g_2 = {\begin{pmatrix} x \\ y \end{pmatrix} \in \mathbb{R}^2 : 2x + 3y = 8}$. 
+          In welcher Lagebeziehung stehen die beiden Geraden zueinander?
+    \begin{align*}
+        g_1 \text{ und } g_2 \text{ sind identisch}
+    \end{align*}
+
+    \item Wie darf $\alpha \in \mathbb{R}$ \textbf{nicht} gewählt werden, damit die Menge \\ ${\begin{pmatrix} 1 \\ 2 \\ -3 \end{pmatrix}
+          + r \begin{pmatrix} -2 \\ 3 \\ 1 \end{pmatrix} + s \begin{pmatrix} 4 \\ \alpha \\ -2 \end{pmatrix} : r , s \in \mathbb{R}}$
+          eine Ebene beschreibt?
+    \begin{align*}
+        \alpha = -6
+    \end{align*}
+
+    \item Der Vektor $\begin{pmatrix} 0 \\ 3 \\ -3 \end{pmatrix}$ ist eine Linearkombination \\ der Vektoren
+          $\begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix}$ und $\begin{pmatrix} -1 \\ 2 \\ -3 \end{pmatrix}$.
+    \begin{align*}
+        \text{Wahr}
+    \end{align*}
+
+    \item Der Vektor $\begin{pmatrix} 1 \\ 1 \\ 2 \end{pmatrix}$ ist eine Linearkombination der Vektoren
+          $\begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}$ und $\begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$.
+    \begin{align*}
+        \text{Falsch}
+    \end{align*}
+
+    \item Ist die Vektormenge 
+          ${\begin{pmatrix} 1 \\ -2 \\ 0 \end{pmatrix} , \begin{pmatrix} 3 \\ 2 \\ 1 \end{pmatrix} , 
+          \begin{pmatrix} 0 \\ 1 \\ 2 \end{pmatrix} , \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}}$
+          im $\mathbb{R}^3$ linear unabhänig?
+    \begin{align*}
+        \text{nein}
+    \end{align*}
+
+    \item Ist die Vektormenge 
+          $\begin{pmatrix} 3 \\ 0 \\ 2 \end{pmatrix} , \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} , 
+          \begin{pmatrix} 9 \\ -6 \\ -1 \end{pmatrix}$ im $\mathbb{R}^3$ linear unabhänig?
+    \begin{align*}
+        \text{nein}
+    \end{align*}
+
+\end{enumerate}
+\end{document}
