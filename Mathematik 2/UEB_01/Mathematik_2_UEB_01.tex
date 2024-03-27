@@ -48,8 +48,8 @@
             \int\limits_{0}^{\pi} (1 - \cos^2(x)) \sin(x) \: \text{d}x &= - \int\limits_{0}^{\pi} (1 - \cos^2(x)) (-\sin(x)) \: \text{d}x \\
             &= - \int\limits_{1}^{-1} (1 - u^2) \: \text{d}u \\
             &= - \left(\int\limits_{1}^{-1} 1 \: \text{d}u - \int\limits_{1}^{-1} u^2 \: \text{d}u\right) \\
-            &= - \left[u\right]_{1}^{-1} - \left[\frac{u^3}{3}\right]_{1}^{-1} \\
-            &= - (-1 - 1) - \left(\frac{-1}{3} - \frac{1}{3}\right) \\
+            &= - \left(\left[u\right]_{1}^{-1} - \left[\frac{u^3}{3}\right]_{1}^{-1}\right) \\
+            &= - \left((-1 - 1) - \left(\frac{-1}{3} - \frac{1}{3}\right)\right) \\
             &= \frac{4}{3}
         \end{align*}
 
@@ -107,6 +107,212 @@
             &= [\ln|u|]_2^4 \\
             &= \ln(4) - \ln(2) \\
             &= \ln(2)
+        \end{align*}
+
+        \item $\int\limits_{0}^{\frac{e-\frac{1}{e}}{2}} \frac{1}{\sqrt{x^{2}+1}} \: \text{d}x$
+        \begin{align*}
+            x &= \sinh(u) \\
+            u &= \text{arsinh}(x) \\
+            \frac{\text{d}x}{\text{d}u} &= \cosh(u) \\
+            \text{d}x &= \cosh(u) \: \text{d}u \\
+            \int \frac{1}{\sqrt{x^{2}+1}} \: \text{d}x &= \int \frac{\cosh(u)}{\sqrt{\sinh^{2}(u)+1}} \: \text{d}u \\
+            &= \int \frac{\cosh(u)}{\sqrt{\cosh^{2}(u)}} \: \text{d}u \\
+            &= \int \text{d}u \\
+            &= u \\
+            &= \text{arsinh}(x) + C \\
+            \int\limits_{0}^{\frac{e-\frac{1}{e}}{2}} \frac{1}{\sqrt{x^{2}+1}} \: \text{d}x &= [\text{arsinh}(x)]_{0}^{\frac{e-\frac{1}{e}}{2}} \\
+            \frac{e-\frac{1}{e}}{2} &= \sinh(y) \\
+            \frac{e-\frac{1}{e}}{2} &= \frac{e^{y} - e^{-y}}{2} \\
+            \frac{e-\frac{1}{e}}{2} &= \frac{e^{1} - e^{-1}}{2} \\
+            \text{arsinh}\left(\frac{e-\frac{1}{e}}{2}\right) &= 1 \\
+            \text{arsinh}(0) &= 0 \text{ , da } \sinh(0) \text{ ist} \\
+            [\text{arsinh}(x)]_{0}^{\frac{e-\frac{1}{e}}{2}} &= 1 \\
+            \int\limits_{0}^{\frac{e-\frac{1}{e}}{2}} \frac{1}{\sqrt{x^{2}+1}} \: \text{d}x &= 1
+        \end{align*}
+
+        \item $\int \frac{4x \arctan(x^2)}{1+x^4} \: \text{d}x$
+        \begin{align*}
+            u &= \arctan(x^2) \\
+            \frac{\text{d}[\arctan(f(x))]}{\text{d}x} &= \frac{1}{1 + (f(x))^2} \cdot f'(x) \\
+            \frac{\text{d}u}{\text{d}x} &= \frac{1}{1 + x^4} 2x \\
+            \text{d}u &= \frac{2x}{1 + x^4} \: \text{d}x \\
+            \int \frac{4x \arctan(x^2)}{1 + x^4} \: \text{d}x &= 2 \int \frac{2x \cdot u}{1 + x^4} \: \text{d}x \\
+            &= 2 \int u \: \text{d}u \\
+            &= 2 \frac{u^2}{2} \\
+            &= u^2 \\
+            &= \arctan^2(x^2) + C
+        \end{align*}
+
+        \item $\int\limits_1^2 x \sqrt{1+x^2} \: \text{d}x$
+        \begin{align*}
+            u &= 1 + x^2 \\ 
+            \frac{\text{d}u}{\text{d}x} &= 2x \\
+            \text{d}u &= 2x \: \text{d}x \\
+            \int\limits_1^2 x \sqrt{1+x^2} \: \text{d}x &= \frac{1}{2} \int\limits_1^2 2x \sqrt{u} \: \text{d}x \\
+            &= \frac{1}{2} \int\limits_2^5 \sqrt{u} \: \text{d}u \\
+            &= \left[\frac{u^{\frac{3}{2}}}{3}\right]_2^5 \\
+            &= \frac{5^{\frac{3}{2}}}{3} - \frac{2^{\frac{3}{2}}}{3} \\
+            &= \frac{5^{\frac{3}{2}} - 2^{\frac{3}{2}}}{3}
+        \end{align*}
+
+        \item $\int\limits_2^3 4x \ln(2x) \: \text{d}x$
+        \begin{align*}
+            \int\limits_2^3 4x \ln(2x) \: \text{d}x &= 4 \int\limits_2^3 x \ln(2x) \: \text{d}x \\
+            f' &= x \\
+            g &= \ln(2x) \\
+            \int x \ln(2x) \: \text{d}x &= \frac{1}{2} x^2 \ln(2x) - \int \frac{1}{2} x^2 \frac{1}{x} \: \text{d}x \\
+            &= \frac{1}{2} x^2 \ln(2x) - \frac{1}{2} \int x \: \text{d}x \\
+            &= \frac{1}{2} x^2 \ln(2x) - \frac{1}{2} \frac{1}{2} x^2 \\ 
+            &= \frac{x^2 \ln(2x)}{2} - \frac{x^2}{4} \\ 
+            \int\limits_2^3 4x \ln(2x) \: \text{d}x &= 4 \left[\frac{x^2 \ln(2x)}{2} - \frac{x^2}{4}\right]_2^3 \\ 
+            &= \left[2x^2 \ln(2x) - x^2\right]_2^3 \\ 
+            &= (2 \cdot 3^2 \cdot \ln(2 \cdot 3) - 3^2) - (2 \cdot 2^2 \cdot \ln(2 \cdot 2) - 2^2) \\
+            &= (18 \ln(6) - 9) - (8 \ln(4) - 4) \\
+            &= 18 \ln(6) - 8 \ln(4) - 5
+        \end{align*}
+
+        \item $\int 3 e^x \sqrt{e^x + 1} \: \text{d}x$ 
+        \begin{align*}
+            u &= e^x + 1 \\
+            \frac{\text{d}u}{\text{d}x} &= e^x \\
+            \text{d}u &= e^x \: \text{d}x \\
+            \int 3 e^x \sqrt{e^x + 1} \: \text{d}x &= 3 \int e^x \sqrt{u} \: \text{d}x \\
+            &= 3 \int \sqrt{u} \: \text{d}u \\
+            &= 3 \frac{2 u^{\frac{3}{2}}}{3} \\
+            &= 2 u^{\frac{3}{2}} \\
+            &= 2 (e^x + 1)^{\frac{3}{2}} + C
+        \end{align*}
+
+        \item $\int \tan(x) \: \text{d}x$
+        \begin{align*}
+            \int \tan(x) \: \text{d}x &= \int \frac{\sin(x)}{\cos(x)} \: \text{d}x \\
+            u &= \cos(x) \\
+            \frac{\text{d}u}{\text{d}x} &= - \sin(x) \\
+            \text{d}u &= - \sin(x) \: \text{d}x \\
+            \int \frac{\sin(x)}{\cos(x)} \: \text{d}x &= - \int \frac{- \sin(x)}{\cos(x)} \: \text{d}x \\
+            &= - \int \frac{\text{d}u}{u} \: \\
+            &= - \ln(|u|) \\
+            &= - \ln(|\cos(x)|) + C
+        \end{align*}
+
+        \item $\int \frac{\sin(x)}{1 + \cos^2(x)} \: \text{d}x$
+        \begin{align*}
+            u &= \cos(x) \\
+            \frac{\text{d}u}{\text{d}x} &= - \sin(x) \\
+            \text{d}u &= - \sin(x) \: \text{d}x \\
+            \int \frac{\sin(x)}{1 + \cos^2(x)} \: \text{d}x &= - \int \frac{- \sin(x)}{1 + \cos^2(x)} \: \text{d}x \\
+            &= - \int \frac{1}{1 + u^2} \: \text{d}u \\
+            &= - \arctan(u) \\
+            &= - \arctan(\cos(x))
+        \end{align*}
+
+        \item $\int \left(\frac{(2 \sqrt{x} + 1)^2}{x^2} - \frac{1}{x \sqrt{x}}\right) \: \text{d}x$
+        \begin{align*}
+            \int \left(\frac{(2 \sqrt{x} + 1)^2}{x^2} - \frac{1}{x \sqrt{x}}\right) \: \text{d}x &= \int \frac{(2 \sqrt{x} + 1)^2}{x^2} \: \text{d}x - \int \frac{1}{x \sqrt{x}} \: \text{d}x \\
+            \int \frac{(2 \sqrt{x} + 1)^2}{x^2} \: \text{d}x &= \int \frac{4x + 4\sqrt{x} + 1}{x^2} \: \text{d}x \\
+            &= \int \frac{4x}{x^2} \: \text{d}x + \int \frac{4\sqrt{x}}{x^2} \: \text{d}x + \int \frac{1}{x^2} \: \text{d}x \\
+            &= 4 \int \frac{1}{x} \: \text{d}x + 4 \int \frac{1}{x^{\frac{3}{2}}} \: \text{d}x + \int \frac{1}{x^2} \: \text{d}x \\
+            &= 4 \ln(|x|) - \frac{8}{\sqrt{x}} - \frac{1}{x} \\
+            \int \frac{1}{x \sqrt{x}} \: \text{d}x &= \int \frac{1}{x^{\frac{3}{2}}} \: \text{d}x \\
+            &= - \frac{2}{\sqrt{x}} \\
+            \int \frac{(2 \sqrt{x} + 1)^2}{x^2} \: \text{d}x - \int \frac{1}{x \sqrt{x}} \: \text{d}x &= 4 \ln(|x|) - \frac{8}{\sqrt{x}} - \frac{1}{x} - \left(-\frac{2}{\sqrt{x}}\right) \\
+            \int \left(\frac{(2 \sqrt{x} + 1)^2}{x^2} - \frac{1}{x \sqrt{x}}\right) \: \text{d}x &= 4 \ln(|x|) - \frac{6}{\sqrt{x}} - \frac{1}{x} + C
+        \end{align*}
+
+        \item $\int x^2 \sin(x) \: \text{d}x$
+        \begin{align*}
+            f' &= \sin(x) \\
+            g &= x^2 \\
+            \int x^2 \sin(x) \: \text{d}x &= - x^2 \cos(x) - \int - 2x \cos(x) \: \text{d}x \\
+            &= - x^2 \cos(x) + 2 \int x \cos(x) \: \text{d}x \\
+            f' &= \cos(x) \\
+            g &= x \\
+            \int x^2 \sin(x) \: \text{d}x &= - x^2 \cos(x) + 2 (x \sin(x) - \int \sin(x) \cdot 1 \: \text{d}x) \\
+            &= - x^2 \cos(x) + 2 (x \sin(x) - (- \cos(x))) \\
+            &= - x^2 \cos(x) + 2 x \sin(x) + 2 \cos(x) + C \\
+            &= 2 x \sin(x) + \cos(x) (2 - x^2) + C
+        \end{align*}
+
+        \item $\int e^{ax} \sin(bx) \: \text{d}x \text{ , für } a,b \in \mathbb{R} \setminus \{0\}$
+        \begin{align*}
+            f' &= e^{ax} \\
+            g &= \sin(bx) \\
+            \int e^{ax} \sin(bx) \: \text{d}x &= \frac{e^{ax} \sin(bx)}{a} - \int \frac{e^{ax} b \cos(bx)}{a} \: \text{d}x \\
+            &= \frac{e^{ax} \sin(bx)}{a} - \frac{b}{a} \int e^{ax} \cos(bx) \: \text{d}x \\
+            f' &= e^{ax} \\
+            g &= \cos(bx) \\
+            \int e^{ax} \sin(bx) \: \text{d}x &= \frac{e^{ax} \sin(bx)}{a} - \frac{b}{a} \left(\frac{e^{ax} \cos(bx)}{a} - \int \frac{-e^{ax} b \sin(bx)}{a} \: \text{d}x\right) \\
+            &= \frac{e^{ax} \sin(bx)}{a} - \frac{b}{a} \left(\frac{e^{ax} \cos(bx)}{a} + \frac{b}{a} \int e^{ax} \sin(bx) \: \text{d}x\right) \\
+            &= \frac{e^{ax} \sin(bx)}{a} - \frac{be^{ax} \cos(bx)}{a^2} - \frac{b^2}{a^2} \int e^{ax} \sin(bx) \: \text{d}x \\
+            \int e^{ax} \sin(bx) \: \text{d}x + \frac{b^2}{a^2} \int e^{ax} \sin(bx) \: \text{d}x &= \frac{e^{ax} \sin(bx)}{a} - \frac{be^{ax} \cos(bx)}{a^2} \\
+            \frac{a^{2} \int e^{ax} \sin(bx) \: \text{d}x + b^{2} \int e^{ax} \sin(bx) \: \text{d}x}{a^2} &= \frac{e^{ax} \sin(bx)}{a} - \frac{be^{ax} \cos(bx)}{a^2} \\
+            a^{2} \int e^{ax} \sin(bx) \: \text{d}x + b^{2} \int e^{ax} \sin(bx) \: \text{d}x &= a e^{ax} \sin(bx) - be^{ax} \cos(bx) \\
+            (a^{2} + b^{2}) \int e^{ax} \sin(bx) \: \text{d}x &= a e^{ax} \sin(bx) - be^{ax} \cos(bx) \\
+            \int e^{ax} \sin(bx) \: \text{d}x &= \frac{a e^{ax} \sin(bx)}{a^{2} + b^{2}} - \frac{be^{ax} \cos(bx)}{a^{2} + b^{2}} \\
+            &= \frac{a e^{ax} \sin(bx) - be^{ax} \cos(bx)}{a^{2} + b^{2}} + C
+        \end{align*}
+
+        \item $\int (x^2 + 2x) \sinh\left(\frac{x}{2}\right) \: \text{d}x$
+        \begin{align*}
+            f' &= \sinh\left(\frac{x}{2}\right) \\
+            g &= x^2 + 2x \\
+            \int (x^2 + 2x) \sinh\left(\frac{x}{2}\right) \: \text{d}x &= 2 \cosh\left(\frac{x}{2}\right) (x^2 + 2x) - \int 2 \cosh\left(\frac{x}{2}\right) (2x + 2) \: \text{d}x \\
+            &= 2 \cosh\left(\frac{x}{2}\right) (x^2 + 2x) - 2 \int \cosh\left(\frac{x}{2}\right) (2x + 2) \: \text{d}x \\
+            f' &= \cosh\left(\frac{x}{2}\right) \\
+            g &= 2x + 2 \\
+            \int \cosh\left(\frac{x}{2}\right) (2x + 2) \: \text{d}x &= 2 \sinh\left(\frac{x}{2}\right) (2x + 2) - \int 2 \sinh\left(\frac{x}{2}\right) 2 \: \text{d}x \\
+            &= 2 \sinh\left(\frac{x}{2}\right) (2x + 2) - 4 \int \sinh\left(\frac{x}{2}\right) \: \text{d}x \\
+            &= 2 \sinh\left(\frac{x}{2}\right) (2x + 2) - 8 \cosh\left(\frac{x}{2}\right) \\
+            \int (x^2 + 2x) \sinh\left(\frac{x}{2}\right) \: \text{d}x &= 2 \cosh\left(\frac{x}{2}\right) (x^2 + 2x) - 2 \int \cosh\left(\frac{x}{2}\right) (2x + 2) \: \text{d}x \\
+            &= 2 \cosh\left(\frac{x}{2}\right) (x^2 + 2x) - 2 (2 \sinh\left(\frac{x}{2}\right) (2x + 2) - 8 \cosh\left(\frac{x}{2}\right)) \\
+            &= 2 \cosh\left(\frac{x}{2}\right) (x^2 + 2x) - 8 \sinh\left(\frac{x}{2}\right) (x + 1) + 16 \cosh\left(\frac{x}{2}\right) + C
+        \end{align*}
+
+        \item $\int \sin(ax) \cos(bx) \: \text{d}x \text{ , für } a,b \in \mathbb{R} \setminus \{0\} \text{ mit } |a| \neq |b|$
+        \begin{align*}
+            \sin(\alpha) \cos(\beta) &= \frac{1}{2} (\sin(\beta + \alpha) - \sin(\beta - \alpha)) \\
+            \alpha &= ax \\
+            \beta &= bx \\
+            \int \sin(ax) \cos(bx) \: \text{d}x &= \int \left(\frac{1}{2} (\sin(bx + ax) - \sin(bx - ax))\right) \: \text{d}x \\
+            &= \frac{1}{2} \left( \int \sin(x(b+a)) \: \text{d}x - \int \sin(x(b-a)) \: \text{d}x \right) \\
+            u_1 &= x(b+a) \\
+            \frac{\text{d}u_1}{\text{d}x} &= b+a \\
+            \text{d}u_1 &= (b+a) \: \text{d}x \\
+            \int \sin(x(b+a)) \: \text{d}x &= \frac{1}{b+a} \int (b+a) \sin(x(b+a)) \: \text{d}x \\
+            &= \frac{1}{b+a} \int \sin(u_1) \: \text{d}u_1 \\
+            &= \frac{-\cos(u_1)}{b+a} \\
+            &= \frac{-\cos(x(b+a))}{b+a} \\
+            u_2 &= x(b-a) \\
+            \frac{\text{d}u_2}{\text{d}x} &= b-a \\
+            \text{d}u_2 &= (b-a) \: \text{d}x \\
+            \int \sin(x(b-a)) \: \text{d}x &= \frac{1}{b-a} \int (b-a) \sin(x(b-a)) \: \text{d}x \\
+            &= \frac{1}{b-a} \int \sin(u_2) \: \text{d}u_2 \\
+            &= \frac{-\cos(u_2)}{b-a} \\
+            &= \frac{-\cos(x(b-a))}{b-a} \\
+            \int \sin(ax) \cos(bx) \: \text{d}x &= \frac{1}{2} \left(\frac{-\cos(x(b+a))}{b+a} + \frac{\cos(x(b-a))}{b-a}\right) \\
+            &= \frac{\cos(x(b-a))}{2(b-a)} - \frac{\cos(x(b+a))}{2(b+a)} + C
+        \end{align*}
+
+        \item $\int \sin(ax) \cos(bx) \: \text{d}x \text{ , für } a,b \in \mathbb{R} \setminus \{0\} \text{ mit } |a| = |b|$
+        \begin{align*}
+            (1) \: a &= b \\
+            \int \sin(ax) \cos(ax) \: \text{d}x \\
+            u_1 &= \sin(ax) \\
+            \frac{\text{d}u_1}{\text{d}x} &= a \cos(ax) \\
+            \text{d}u_1 &= a \cos(ax) \text{d}x \\
+            \int \sin(ax) \cos(ax) \: \text{d}x &= \frac{1}{a} \int \sin(ax) a \cos(ax) \: \text{d}x \\
+            &= \frac{1}{a} \int u_1 \: \text{d}u_1 \\
+            &= \frac{u^2}{2a} \\
+            &= \frac{\sin^2(ax)}{2a} + C \\
+            (2) \: a &= -b \\
+            \int \sin(-ax) \cos(ax) \: \text{d}x \\
+            u_2 &= \cos(ax) \\
+            \frac{\text{d}u_2}{\text{d}x} &= -a \sin(ax) \\
+            \text{d}u_2 &= -a \sin(ax) \text{d}x \\
+            \int \sin(ax) \cos(ax) \: \text{d}x &= \frac{-1}{a} \int -a \sin(ax) \cos(ax) \: \text{d}x \\
+            &= \frac{-1}{a} \int u_2 \: \text{d}u_2 \\
+            &= \frac{-u^2}{2a} \\
+            &= \frac{-\sin^2(ax)}{2a} + C
         \end{align*}
 
     \end{enumerate}
